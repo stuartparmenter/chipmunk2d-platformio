@@ -1,0 +1,19 @@
+{
+  "name": "Chipmunk2D",
+  "version": "7.0.3+esphome.1",
+  "license": "MIT",
+  "build": {
+    "srcDir": "chipmunk2d/src",
+    "includeDir": "chipmunk2d/include",
+    "srcFilter": [
+      "+<*.c>",
+      "+<*/*.c>",
+      "-<cpHastySpace.c>"
+    ],
+    "flags": [
+      "-DNDEBUG=1",
+      "-DCP_USE_DOUBLES=0"
+    ]
+  },
+  "platforms": ["espressif32"]
+}
