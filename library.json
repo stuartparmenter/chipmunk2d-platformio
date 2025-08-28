@@ -3,16 +3,20 @@
   "version": "7.0.3+esphome.1",
   "license": "MIT",
   "build": {
-    "srcDir": "chipmunk2d/src",
+    "srcDir": ".",
     "includeDir": "chipmunk2d/include",
     "srcFilter": [
-      "+<*.c>",
-      "+<*/*.c>",
-      "-<cpHastySpace.c>"
+      "+<chipmunk2d/src/*.c>",
+      "-<chipmunk2d/src/cpHastySpace.c>",
+      "+<src/cp_custom_alloc.c>"
     ],
     "flags": [
       "-DNDEBUG=1",
-      "-DCP_USE_DOUBLES=0"
+      "-DCP_USE_DOUBLES=0",
+      "-Isrc", "-include cp_custom_alloc.h",
+      "-Dcpcalloc=cp_custom_calloc",
+      "-Dcprealloc=cp_custom_realloc",
+      "-Dcpfree=cp_custom_free"
     ]
   },
   "platforms": ["espressif32"]
